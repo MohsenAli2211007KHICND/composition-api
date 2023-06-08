@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { computed, reactive, ref } from 'vue'
+import { computed, onMounted, onUnmounted, onUpdated, reactive, ref } from 'vue'
 export default {
     name: 'FormView',
     setup(){
@@ -44,6 +44,9 @@ export default {
         const filterNames = computed(() => {
             return names.value.filter((name) => name.includes(search.value))
         })
+        onMounted(() => console.log('component mounted'))
+        onUnmounted(() => console.log('Component unmounted'))
+        onUpdated(() => console.log('Component Updated'))
             return {search, names, filterNames}
     }
 }
